@@ -3,6 +3,7 @@ if not cmp_status_ok then
   return
 end
 
+
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
   return
@@ -15,7 +16,6 @@ local check_backspace = function()
   local col = vim.fn.col "." - 1
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
-
 
 cmp.setup({
   snippet = {
@@ -59,7 +59,7 @@ cmp.setup({
       "s",
     }),
   }),
-
+  
   -- 这里重要
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -68,4 +68,5 @@ cmp.setup({
   }, {
     { name = 'buffer' },
   })
+
 })
