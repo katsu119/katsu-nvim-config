@@ -59,7 +59,7 @@ cmp.setup({
       "s",
     }),
   }),
-  
+
   -- 这里重要
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
