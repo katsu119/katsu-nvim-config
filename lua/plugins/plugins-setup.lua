@@ -24,7 +24,7 @@ return require('packer').startup(function(use)
   -- My plugins here
   -- use 'foo1/bar1.nvim'
   use 'folke/tokyonight.nvim'   -- Color Scheme
-  
+
   -- Status Line
   use {
     'nvim-lualine/lualine.nvim',
@@ -51,7 +51,11 @@ return require('packer').startup(function(use)
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
   })
- 
+
+
+  -- Symbols Outline
+  use 'simrat39/symbols-outline.nvim'
+
   -- Completion Snippet 
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
@@ -60,6 +64,7 @@ return require('packer').startup(function(use)
   use "saadparwaiz1/cmp_luasnip"
   use "rafamadriz/friendly-snippets"
 
+  -- Comment 
   use "numToStr/Comment.nvim" -- gcc和gc注释
   use "windwp/nvim-autopairs" -- 自动补全括号
 

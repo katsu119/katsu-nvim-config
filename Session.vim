@@ -13,11 +13,9 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +36 ~/.config/nvim/lua/core/options.lua
-badd +1 ~/.config/nvim/lua/core/keymaps.lua
-badd +70 ~/.config/nvim/lua/plugins/plugins-setup.lua
-badd +8 ~/.config/nvim/lua/plugins/telescope.lua
-badd +15 ~/.config/nvim/init.lua
+badd +18 ~/.config/nvim/lua/core/options.lua
+badd +7 ~/.config/nvim/lua/plugins/lsp.lua
+badd +79 ~/.config/nvim/lua/plugins/plugins-setup.lua
 argglobal
 %argdel
 edit ~/.config/nvim/lua/core/options.lua
@@ -53,6 +51,7 @@ setlocal fdn=20
 setlocal nofen
 wincmd w
 argglobal
+balt ~/.config/nvim/lua/plugins/lsp.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -63,13 +62,14 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 36 - ((35 * winheight(0) + 23) / 47)
+let s:l = 12 - ((11 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 36
+keepjumps 12
 normal! 0
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 30 + 104) / 209)
 exe 'vert 2resize ' . ((&columns * 178 + 104) / 209)
 tabnext 1
@@ -87,6 +87,7 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
