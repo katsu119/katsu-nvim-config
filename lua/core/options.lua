@@ -11,7 +11,7 @@ opt.expandtab = true
 opt.autoindent = true
 
 -- wrap off
-opt.wrap = false
+opt.wrap = true
 
 opt.cursorline = true
 opt.scrolloff = 3
@@ -34,4 +34,3 @@ opt.smartcase = true
 opt.termguicolors = true
 opt.signcolumn = "yes"
 
-vim.cmd([[colorscheme tokyonight-moon]])

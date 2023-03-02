@@ -68,7 +68,9 @@ return require('packer').startup(function(use)
   use "numToStr/Comment.nvim" -- gcc和gc注释
   use "windwp/nvim-autopairs" -- 自动补全括号
 
-  use "akinsho/bufferline.nvim" -- buffer分割线
+  use {"akinsho/bufferline.nvim" ,
+    requires = 'kyazdani42/nvim-web-devicons',
+  } -- buffer分割线
   use "lewis6991/gitsigns.nvim" -- 左则git提示
 
   use {
