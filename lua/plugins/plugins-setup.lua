@@ -52,7 +52,8 @@ return require('packer').startup(function(use)
     "neovim/nvim-lspconfig",
   })
 
-
+  -- Scroll bar for Smooth Scroll
+  use 'karb94/neoscroll.nvim'
   -- Symbols Outline
   use 'simrat39/symbols-outline.nvim'
 

@@ -3,6 +3,7 @@ require("core/keymaps")
 
 -- Plugins 
 require("plugins/plugins-setup")
+
 require("plugins/lsp")
 require("plugins/cmp")
 require("plugins/lualine")
@@ -14,4 +15,5 @@ require("plugins/bufferline")
 require("plugins/gitsign")
 require("plugins/telescope")
 require("plugins/outline")
+require("plugins/scrollbar")
 require("plugins/theme")

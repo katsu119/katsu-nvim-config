@@ -12,5 +12,8 @@ keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 keymap.set("n", "<leader>l", ":bnext<CR>")
 keymap.set("n", "<leader>h", ":bprevious<CR>")
 
+-- keymap.set("t", "<Esc>", "<C-\\><C-n>")
+-- keymap.set("t", "<C-v><Esc>", "<Esc>")
+
 -- Outline
 keymap.set("n", "<leader>o", ":SymbolsOutline<CR>")
