@@ -63,11 +63,36 @@ require("lspconfig").clangd.setup {
   flags = lsp_flags,
 }
 
-require("lspconfig").verible.setup {
+-- require("lspconfig").verible.setup {
+--   on_attach = on_attach,
+--   -- capabilities = capabilities,
+--   flags = lsp_flags,
+--   root_dir = function() return vim.loop.cwd() end,
+-- }
+
+require("lspconfig").svls.setup({
   on_attach = on_attach,
-  capabilities = capabilities,
   flags = lsp_flags,
-}
+  capabilities = capabilities,
+})
+
+-- if not require'lspconfig.configs'.hdl_checker then
+--   require'lspconfig.configs'.hdl_checker = {
+--     default_config = {
+--     cmd = {"hdl_checker", "--lsp", };
+--     filetypes = {"vhdl", "verilog", "systemverilog"};
+--       root_dir = function(fname)
+--         -- will look for the .hdl_checker.config file in parent directory, a
+--         -- .git directory, or else use the current directory, in that order.
+--         local util = require'lspconfig'.util
+--         return util.root_pattern('.hdl_checker.config')(fname) or util.find_git_ancestor(fname) or util.path.dirname(fname)
+--       end;
+--       settings = {};
+--     };
+--   }
+-- end
+--
+-- require'lspconfig'.hdl_checker.setup{}
 
 require("lspconfig").lua_ls.setup {
   on_attach = on_attach,

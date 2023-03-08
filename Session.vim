@@ -13,12 +13,13 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +18 ~/.config/nvim/lua/core/options.lua
-badd +7 ~/.config/nvim/lua/plugins/lsp.lua
-badd +79 ~/.config/nvim/lua/plugins/plugins-setup.lua
+badd +64 ~/.config/nvim/lua/plugins/cmp.lua
+badd +3 ~/.config/nvim/lua/plugins/nvim-treesitter.lua
+badd +19 ~/.config/nvim/init.lua
+badd +94 ~/.config/nvim/lua/plugins/lsp.lua
 argglobal
 %argdel
-edit ~/.config/nvim/lua/core/options.lua
+edit ~/.config/nvim/lua/plugins/lsp.lua
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -40,7 +41,7 @@ exe 'vert 2resize ' . ((&columns * 178 + 104) / 209)
 argglobal
 enew
 file NvimTree_1
-balt ~/.config/nvim/lua/core/options.lua
+balt ~/.config/nvim/init.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -51,7 +52,7 @@ setlocal fdn=20
 setlocal nofen
 wincmd w
 argglobal
-balt ~/.config/nvim/lua/plugins/lsp.lua
+balt ~/.config/nvim/lua/plugins/cmp.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -62,12 +63,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 12 - ((11 * winheight(0) + 23) / 47)
+let s:l = 73 - ((21 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 12
-normal! 0
+keepjumps 73
+normal! 04|
 wincmd w
 2wincmd w
 exe 'vert 1resize ' . ((&columns * 30 + 104) / 209)

@@ -57,6 +57,9 @@ return require('packer').startup(function(use)
   -- Symbols Outline
   use 'simrat39/symbols-outline.nvim'
 
+  -- Terminal
+  use {"akinsho/toggleterm.nvim",}
+
   -- Completion Snippet 
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
