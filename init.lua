@@ -5,6 +5,7 @@ require("core/keymaps")
 require("plugins/plugins-setup")
 
 require("plugins/lsp")
+require("plugins/lspsaga")
 require("plugins/cmp")
 require("plugins/lualine")
 require("plugins/nvim-tree")

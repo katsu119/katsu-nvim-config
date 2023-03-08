@@ -25,23 +25,24 @@ return require('packer').startup(function(use)
   -- use 'foo1/bar1.nvim'
   use 'folke/tokyonight.nvim'   -- Color Scheme
 
+  -- Syntax Highlight
+  use ("nvim-treesitter/nvim-treesitter")
+
+  -- File Navigater
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {'nvim-tree/nvim-web-devicons', }
+  }
+
   -- Status Line
   use {
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
 
-  -- File Navigater
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {'nvim-tree/nvim-web-devicons',}
-  }
-
   -- Windows Navigator
   use "christoomey/vim-tmux-navigator"
 
-  -- Syntax Highlight
-  use ("nvim-treesitter/nvim-treesitter")
 
   -- use "p00f/nvim-ts-rainbow"
 
@@ -50,6 +51,15 @@ return require('packer').startup(function(use)
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
+  })
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    requires = {
+        {"nvim-tree/nvim-web-devicons"},
+        --Please make sure you install markdown and markdown_inline parser
+        {"nvim-treesitter/nvim-treesitter"}
+    }
   })
 
   -- Scroll bar for Smooth Scroll

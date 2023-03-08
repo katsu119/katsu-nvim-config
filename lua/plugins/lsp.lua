@@ -1,24 +1,27 @@
 require("mason").setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗"
     }
+  }
 })
 
-require("mason-lspconfig").setup ({
-    ensure_installed = { "lua_ls", "rust_analyzer", "verible" },
+local lsp_server_need_installed = { "lua_ls", "rust_analyzer", "clangd", "svlangserver", "verible" }
+
+require("mason-lspconfig").setup({
+  ensure_installed = lsp_server_need_installed,
 })
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+vim.keymap.set('n', '<space>D',  "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -28,22 +31,32 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<space>d', "<cmd>Lspsaga peek_definition<CR>", bufopts)
+  vim.keymap.set('n', 'K',  "<cmd>Lspsaga hover_doc<CR>", bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+
+  -- workspace related keymap
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, bufopts)
+
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+  if client.name == "svlangserver" then
+    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+  end
+
+  -- Outline
+  vim.keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)
+
 end
 
 
@@ -52,6 +65,12 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
+-- custom the sign of diagnostic
+local signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
 
 
 
@@ -69,6 +88,13 @@ require("lspconfig").clangd.setup {
 --   flags = lsp_flags,
 --   root_dir = function() return vim.loop.cwd() end,
 -- }
+
+require("lspconfig").svlangserver.setup({
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+  filetypes = {"verilog", "systemverilog"},
+})
 
 require("lspconfig").svls.setup({
   on_attach = on_attach,
@@ -101,10 +127,14 @@ require("lspconfig").lua_ls.setup {
   settings = {
     Lua = {
       diagnostics = {
-        globals = {"vim"},
+        globals = { "vim" },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+          [vim.fn.stdpath("config") .. "/lua"] = true,
+        },
       },
     },
   },
 }
-
-
