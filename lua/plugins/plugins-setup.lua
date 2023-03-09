@@ -52,6 +52,7 @@ return require('packer').startup(function(use)
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
   })
+  use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
   use({
     "glepnir/lspsaga.nvim",
     branch = "main",

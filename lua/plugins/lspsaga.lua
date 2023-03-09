@@ -6,7 +6,19 @@ end
 saga.setup({
 
 })
-
+  --
+  -- callhierarchy = {
+  --   show_detail = false,
+  --   keys = {
+  --     edit = "e",
+  --     vsplit = "s",
+  --     split = "i",
+  --     tabe = "t",
+  --     jump = "o",
+  --     quit = "q",
+  --     expand_collapse = "u",
+  --   },
+  -- },
 
 local keymap = vim.keymap.set
 --
