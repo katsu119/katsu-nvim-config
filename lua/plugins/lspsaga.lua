@@ -4,7 +4,9 @@ if not saga_status then
 end
 
 saga.setup({
-
+  lightbulb = {
+    enable_in_insert = false,
+  },
 })
   --
   -- callhierarchy = {
