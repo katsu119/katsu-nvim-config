@@ -9,8 +9,8 @@ local keymap = vim.keymap
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
-keymap.set("n", "<leader>l", ":bnext<CR>")
-keymap.set("n", "<leader>h", ":bprevious<CR>")
+keymap.set("n", "<leader>[", ":bnext<CR>")
+keymap.set("n", "<leader>]", ":bprevious<CR>")
 
 -- keymap.set("t", "<Esc>", "<C-\\><C-n>")
 -- keymap.set("t", "<C-v><Esc>", "<Esc>")

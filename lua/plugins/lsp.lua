@@ -126,19 +126,19 @@ require("lspconfig").verible.setup {
   flags = lsp_flags,
   -- root_dir = function() return vim.loop.cwd() end,
 }
-
+--
 require("lspconfig").svlangserver.setup({
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
   filetypes = {"verilog", "systemverilog"},
 })
-
-require("lspconfig").svls.setup({
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-})
+--
+-- require("lspconfig").svls.setup({
+--   on_attach = on_attach,
+--   flags = lsp_flags,
+--   capabilities = capabilities,
+-- })
 
 -- if not require'lspconfig.configs'.hdl_checker then
 --   require'lspconfig.configs'.hdl_checker = {

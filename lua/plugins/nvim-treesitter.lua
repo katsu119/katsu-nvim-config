@@ -4,8 +4,8 @@ require'nvim-treesitter.configs'.setup {
     "lua",
     "vim",
     "verilog",
-    "scala",
-    "help",
+    -- "scala",
+    -- "help",
   },
 
 
