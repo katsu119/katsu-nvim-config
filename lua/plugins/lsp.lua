@@ -120,20 +120,26 @@ require("lspconfig").clangd.setup {
   flags = lsp_flags,
 }
 
-require("lspconfig").verible.setup {
+require("lspconfig").bashls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   flags = lsp_flags,
-  -- root_dir = function() return vim.loop.cwd() end,
 }
---
+
+-- require("lspconfig").verible.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   flags = lsp_flags,
+--   root_dir = function() return vim.loop.cwd() end,
+-- }
+
 require("lspconfig").svlangserver.setup({
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
   filetypes = {"verilog", "systemverilog"},
 })
---
+
 -- require("lspconfig").svls.setup({
 --   on_attach = on_attach,
 --   flags = lsp_flags,

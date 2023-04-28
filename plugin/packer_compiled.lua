@@ -89,10 +89,25 @@ _G.packer_plugins = {
     path = "/home/katsu/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/home/katsu/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-cmdline"] = {
+    loaded = true,
+    path = "/home/katsu/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/katsu/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-nvim-lua"] = {
+    loaded = true,
+    path = "/home/katsu/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
+    url = "https://github.com/hrsh7th/cmp-nvim-lua"
   },
   ["cmp-path"] = {
     loaded = true,
@@ -103,6 +118,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/katsu/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
+  ["fcitx.nvim"] = {
+    loaded = true,
+    path = "/home/katsu/.local/share/nvim/site/pack/packer/start/fcitx.nvim",
+    url = "https://github.com/h-hg/fcitx.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -208,6 +228,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/katsu/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
     url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
+  vim_current_word = {
+    loaded = true,
+    path = "/home/katsu/.local/share/nvim/site/pack/packer/start/vim_current_word",
+    url = "https://github.com/dominikduda/vim_current_word"
   }
 }
 
